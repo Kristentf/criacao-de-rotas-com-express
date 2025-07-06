@@ -1,19 +1,18 @@
 const express = require("express");
 const app = express();
 
-app.get("/", function(req, res){
-    res.send("Rota inicial")
-});
+app.get("/", (req, res) => {
+    res.send("Rota padrão")});
 
-app.get("/cadastro", function(req, res){
+app.get("/cadastro", (req, res) => {
     res.send("Rota de cadastro")
 })
 
-app.get("/login", function(req, res){
-    res.send("Rota de login")
+app.get("/login/:nome/:senha", (req, res) => {
+    res.send("<h1>Olá " + req.params.nome + ", sua senha eh " + req.params.senha + "</h1>")
 });
 
-app.listen("3000", function(){
+app.listen("3000", () => {
     console.log("Servidor rodando na url http://localhost:3000 através do express")
 });
 
